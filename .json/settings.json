@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "title": "Max Geburtstag",
+    "description": "Ein lockerer Nachmittag mit Kuchen, Spielen und Musik. Bitte bringe etwas Kleines fürs Buffet mit."
+  },
+  {
+    "id": 2,
+    "title": "Sommerfest im Innenhof",
+    "description": "Gemeinsames Grillen mit Nachbarn. Vegetarische Optionen sind vorhanden, Getränke bitte selbst mitbringen."
+  },
+  {
+    "id": 3,
+    "title": "Team-Workshop",
+    "description": "Interner Workshop zu neuen Projektideen. Start um 10:00, Materialien werden gestellt."
+  }
+]
