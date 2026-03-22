@@ -1,0 +1,7 @@
+@media (max-width: 900px) {
+  .events-page {
+    &__content {
+      grid-template-columns: 1fr;
+    }
+  }
+}

@@ -19,31 +19,26 @@
   grid-template-rows: auto 1fr;
   gap: 18px;
 }
-
 .events-page__header {
   background: #ffffff;
   border: 1px solid #cfd5dd;
   border-radius: 14px;
   padding: 18px 22px;
 }
-
 .events-page__brand {
   margin: 0;
   font-size: 1.9rem;
   line-height: 1.1;
 }
-
 .events-page__subtitle {
   margin: 6px 0 0;
   color: #4b5563;
 }
-
 .events-page__content {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 18px;
 }
-
 .events-page__panel {
   background: #ffffff;
   border: 1px solid #cfd5dd;
@@ -53,31 +48,25 @@
   flex-direction: column;
   min-height: 0;
 }
-
 .events-page__panel-title {
   margin: 0 0 12px;
   font-size: 1.25rem;
 }
-
 .events-page__actions {
   margin-bottom: 14px;
 }
-
 .events-page__event-list {
   display: grid;
   gap: 10px;
   overflow: auto;
   padding-right: 4px;
 }
-
 .events-page__empty {
   margin: 0;
   color: #6b7280;
 }
 
 .events-page__event-item {
-  width: 100%;
-  min-height: 86px;
   border: 1px solid #cfd5dd;
   border-radius: 10px;
   background: #f8fafc;
@@ -87,17 +76,14 @@
   display: grid;
   gap: 6px;
 }
-
 .events-page__event-item--active {
   border-color: #111827;
   background: #eef2ff;
 }
-
 .events-page__event-item-title {
   color: #111827;
   font-size: 1rem;
 }
-
 .events-page__event-item-description {
   color: #374151;
   font-size: 0.92rem;
@@ -106,19 +92,15 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-
 .events-page__form {
   display: grid;
   gap: 10px;
 }
-
 .events-page__label {
   font-weight: 600;
   font-size: 0.93rem;
 }
-
-.events-page__input,
-.events-page__textarea {
+.events-page__input, .events-page__textarea {
   width: 100%;
   border: 1px solid #cfd5dd;
   border-radius: 10px;
@@ -126,18 +108,15 @@
   font: inherit;
   color: inherit;
 }
-
 .events-page__textarea {
   min-height: 220px;
   resize: vertical;
 }
-
 .events-page__form-actions {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
 }
-
 .events-page__button {
   border: none;
   border-radius: 10px;
@@ -147,12 +126,10 @@
   padding: 10px 14px;
   cursor: pointer;
 }
-
 .events-page__button:disabled {
   cursor: not-allowed;
   opacity: 0.5;
 }
-
 .events-page__button--danger {
   background: #b91c1c;
 }
@@ -162,3 +139,5 @@
     grid-template-columns: 1fr;
   }
 }
+
+/*# sourceMappingURL=app.css.map */
