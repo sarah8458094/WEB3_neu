@@ -95,6 +95,5 @@ export class EventListView extends HTMLElement {
   }
 }
 
-if (!customElements.get("eventbuddy-event-list")) {
   customElements.define("eventbuddy-event-list", EventListView);
-}
+

@@ -52,6 +52,6 @@ export class EventItemView extends HTMLElement {
   }
 }
 
-if (!customElements.get("eventbuddy-event-item")) {
+
   customElements.define("eventbuddy-event-item", EventItemView);
-}
+

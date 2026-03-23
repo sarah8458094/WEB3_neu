@@ -80,6 +80,6 @@ export class EventView extends HTMLElement {
   }
 }
 
-if (!customElements.get("eventbuddy-events")) {
+
   customElements.define("eventbuddy-events", EventView);
-}
+

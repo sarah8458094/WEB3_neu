@@ -124,6 +124,6 @@ export class EventEditorView extends HTMLElement {
   }
 }
 
-if (!customElements.get("eventbuddy-event-editor")) {
+
   customElements.define("eventbuddy-event-editor", EventEditorView);
-}
+
