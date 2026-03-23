@@ -1,22 +1,27 @@
+import { model } from "./model.js";
+
 class EventController {
-  constructor(model, view) {
+  constructor() {
     this.model = model;
-    this.view = view;
-    this.selectedEventId = null;
+    this.view = document.querySelector("eventbuddy-events"); //sucht haupt view
   }
 
   init() {
-    this.view.bindCreateNew(() => this.handleCreateNew());
-    this.view.bindSaveEvent((formData) => this.handleSave(formData));
-    this.view.bindDeleteEvent(() => this.handleDelete());
-    this.view.bindSelectEvent((eventId) => this.handleSelect(eventId));
+    //nachrichten von view
+    this.view.addEventListener("create-new", () => this.handleCreateNew());
+    this.view.addEventListener("save-event", (event) => this.handleSave(event.detail));
+    this.view.addEventListener("delete-event", () => this.handleDelete());
+    this.view.addEventListener("select-event", (event) => this.handleSelect(event.detail.eventId));
 
+    //nachrichten von model
+    this.model.addEventListener("events-changed", () => this.render());
+    //erstmaliges zeichnen beim start
     this.render();
   }
 
   handleCreateNew() {
-    this.selectedEventId = null;
-    this.view.setFormData({ title: "", description: "" });
+    this.model.setSelectedEventId(null);
+    this.view.resetEditor(); // Postbote: "View, mach dich leer!"
     this.render();
   }
 
@@ -24,12 +29,9 @@ class EventController {
     const event = this.model.getEventById(eventId);
     if (!event) return;
 
-    this.selectedEventId = eventId;
-    this.view.setFormData({
-      title: event.title,
-      description: event.description
-    });
-
+    this.model.setSelectedEventId(eventId);
+    //Daten von Model in Editor
+    this.view.setFormData(event); // Reicht das Event-Objekt einfach durch
     this.render();
   }
 
@@ -38,37 +40,35 @@ class EventController {
       return;
     }
 
-    if (this.selectedEventId === null) {
+    const selectedEventId = this.model.getSelectedEventId();
+    if (selectedEventId === null) {
+      //neues event anlegen
       const event = this.model.createEvent(formData);
-      this.selectedEventId = event.id;
+      this.model.setSelectedEventId(event.id); //neues element als ausgewählt markieren
     } else {
-      this.model.updateEvent(this.selectedEventId, formData);
+      //bestehendes aktualisieren
+      this.model.updateEvent(selectedEventId, formData);
     }
 
     this.render();
   }
 
   handleDelete() {
-    if (this.selectedEventId === null) {
-      return;
-    }
+    const id = this.model.getSelectedEventId();
+    if (id === null) return;
 
-    const deleted = this.model.deleteEvent(this.selectedEventId);
-    if (!deleted) {
-      return;
-    }
-
-    this.selectedEventId = null;
-    this.view.setFormData({ title: "", description: "" });
+    this.model.deleteEvent(id); // Befehl ans Model
+    this.model.setSelectedEventId(null); // Auswahl im Model löschen
+    this.view.resetEditor(); // View aufräumen
     this.render();
   }
 
   render() {
-    const isEditMode = this.selectedEventId !== null;
-    this.view.setHeading(isEditMode);
-    this.view.setDeleteEnabled(isEditMode);
-    this.view.renderEventList(this.model.getEvents(), this.selectedEventId);
+    const selectedId = this.model.getSelectedEventId();
+    this.view.setHeading(selectedId !== null);
+    this.view.setDeleteEnabled(selectedId !== null);
+    this.view.renderEventList(this.model.getEvents(), selectedId);
   }
 }
 
-window.EventController = EventController;
+export const controller = new EventController();
